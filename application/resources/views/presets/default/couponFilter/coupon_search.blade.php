@@ -37,7 +37,7 @@
                     </a>
                 @else
                     <a class="btn btn--base w-100" href="{{ url('deal/' . $item->path) }}">
-                        Show Detailssss
+                        Show Details
                     </a>
                 @endif
                 @if($item->expire_date)<p class="card-action">{!! isExpired($item->id) !!}</p>@endif
