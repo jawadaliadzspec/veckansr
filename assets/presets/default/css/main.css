@@ -1184,14 +1184,14 @@ button.mfp-close {
 
 @media (max-width: 992px) {
     .py-60 {
-        padding-top: 40px;
+        padding-top: 60px;
         padding-bottom: 40px;
     }
 }
 
 @media (max-width: 576px) {
     .py-60 {
-        padding-top: 30px;
+        padding-top: 60px;
         padding-bottom: 30px;
     }
 }
