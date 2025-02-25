@@ -138,7 +138,7 @@ class LanguageController extends Controller
 
         $perPage = 20; // Number of items per page
         $page = request('page', 1); // Get the current page from the query string
-    dd($request);
+    dd(request());
         $offset = ($page - 1) * $perPage;
         $paginatedData = array_slice($data, $offset, $perPage, true);
         $paginatedData = new LengthAwarePaginator($paginatedData, count($data), $perPage, $page);
