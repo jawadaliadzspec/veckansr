@@ -27,20 +27,20 @@ class LanguageController extends Controller
 
         function find_lang_strings($directory, &$strings) {
             $pattern = "/@lang\\('(.*?)'\\)/"; // define the regular expression pattern
-        
+
             if (is_dir($directory)) {
                 $files = scandir($directory); // get a list of files in the directory
-        
+
                 foreach ($files as $file) {
                     if ($file !== '.' && $file !== '..') {
                         $path = $directory . '/' . $file;
-        
+
                         if (is_dir($path)) {
                             find_lang_strings($path, $strings); // recursively search subdirectories
                         } else {
                             $content = file_get_contents($path); // read the file contents
                             preg_match_all($pattern, $content, $matches); // search for the pattern in the content
-        
+
                             foreach ($matches[1] as $match) {
                                 $strings[] = $match; // add the matched string to the array
                             }
@@ -49,20 +49,20 @@ class LanguageController extends Controller
                 }
             }
         }
-        
+
         $directory = base_path('resources/views'); // get the path to the views directory
         $strings = array(); // initialize an array to store the strings
         find_lang_strings($directory, $strings); // call the recursive function to search the directory
-        
+
         $lang = array();
         foreach ($strings as $string) {
             $lang[$string] = $string; // use the string as both the key and the value
         }
-        
+
         $json = json_encode($lang, JSON_PRETTY_PRINT); // convert the array to a JSON string
         $json_file = strtolower($request->code) . '.json';
         file_put_contents(resource_path('lang/') . $json_file, $json); // write the JSON string to a file
-        
+
 
         $language = new  Language();
 
@@ -127,29 +127,29 @@ class LanguageController extends Controller
         $lang = Language::find($id);
         $pageTitle = "Update " . $lang->name . " Keywords";
         $jsonPath = resource_path('lang/') . $lang->code . '.json';
-        
+
         if (!file_exists($jsonPath)) {
             $notify[] = ['error', 'File not found'];
             return back()->withNotify($notify);
         }
-    
+
         $jsonData = file_get_contents($jsonPath);
         $data = json_decode($jsonData, true);
-    
+
         $perPage = 20; // Number of items per page
         $page = request('page', 1); // Get the current page from the query string
-    
+    dd($page);
         $offset = ($page - 1) * $perPage;
         $paginatedData = array_slice($data, $offset, $perPage, true);
         $paginatedData = new LengthAwarePaginator($paginatedData, count($data), $perPage, $page);
         $paginatedData->setPath(url()->current());
         // dd($paginatedData);
-    
+
         $list_lang = Language::all();
-    
+
         return view('admin.language.edit_lang', compact('pageTitle', 'paginatedData', 'lang', 'list_lang'));
     }
-    
+
 
     public function langImport(Request $request)
     {
