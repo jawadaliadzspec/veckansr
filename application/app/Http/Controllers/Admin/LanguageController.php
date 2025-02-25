@@ -122,7 +122,7 @@ class LanguageController extends Controller
         $notify[] = ['success', 'Language has been deleted successfully'];
         return back()->withNotify($notify);
     }
-    public function langEdit($id)
+    public function langEdit($id,Request $request)
     {
         $lang = Language::find($id);
         $pageTitle = "Update " . $lang->name . " Keywords";
@@ -138,7 +138,7 @@ class LanguageController extends Controller
 
         $perPage = 20; // Number of items per page
         $page = request('page', 1); // Get the current page from the query string
-    dd(request()->all());
+    dd($request->all());
         $offset = ($page - 1) * $perPage;
         $paginatedData = array_slice($data, $offset, $perPage, true);
         $paginatedData = new LengthAwarePaginator($paginatedData, count($data), $perPage, $page);
