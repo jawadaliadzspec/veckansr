@@ -122,7 +122,7 @@ class LanguageController extends Controller
         $notify[] = ['success', 'Language has been deleted successfully'];
         return back()->withNotify($notify);
     }
-    public function langEdit($id,Request $request)
+    public function langEdit($id)
     {
         $lang = Language::find($id);
         $pageTitle = "Update " . $lang->name . " Keywords";
