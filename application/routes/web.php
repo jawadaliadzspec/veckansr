@@ -38,14 +38,15 @@ Route::controller('SiteController')->group(function () {
 
     Route::get('placeholder-image/{size}', 'placeholderImage')->name('placeholder.image');
     Route::get('get/modal/info','getModalInfo')->name('get.modal.info');
+    Route::get('/categories', 'categories')->name('categories');
 
     // exclusive coupon
     Route::get('/exclusive-coupons', 'exclusiveCoupon')->name('exclusive.coupons');
     Route::get('/coupons', 'coupons')->name('coupon');
-    Route::get('/deal/{deal}', 'couponDetails')->name('couponDetails');
+//    Route::get('/deal/{deal}', 'couponDetails')->name('couponDetails');
+    Route::get('/{deal}', 'couponDetails')->name('couponDetails');
 
     // category
-    Route::get('/categories', 'categories')->name('categories');
 
     Route::get('/category/coupons/{id}', 'categoryCoupons')->name('category.coupons');
     Route::get('/store/coupons/{id}', 'storeCoupons')->name('store.coupons');
@@ -72,7 +73,7 @@ Route::controller('SiteController')->group(function () {
     Route::get('/', 'index')->name('home');
 
 });
-Route::get('/{deal}', [CouponController::class, 'couponDetails'])->where('deal', '[a-zA-Z0-9-_]+')->name('couponDetails');
+//Route::get('/{deal}', [\App\Http\Controllers\SiteController::class, 'couponDetails'])->where('deal', '[a-zA-Z0-9-_]+')->name('couponDetails');
 
 
 

@@ -118,7 +118,7 @@
                                         @lang('Get Code')
                                     </a>
                                 @else
-                                    <a class="btn btn--base w-100" href="{{ url('deal/' . $item->path) }}">
+                                    <a class="btn btn--base w-100" href="{{ route('couponDetails', $item->path) }}">
                                         Show Details
                                     </a>
                                 @endif
