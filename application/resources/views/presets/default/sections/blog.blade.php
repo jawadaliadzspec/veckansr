@@ -39,7 +39,7 @@
                 <div class="blog-item wow animate__animated animate__fadeInUp">
                     <div class="blog-item__thumb">
                         <a href="{{ route('blog.details', ['slug' => slug($item->data_values->title), 'id' => $item->id])}}" class="blog-item__thumb-link">
-                            <img src="{{getImage(getFilePath('blog').'/'.'thumb_'.$item->data_values->blog_image)}}" alt="image">
+                            <img src="{{getImage(getFilePath('blog').'/'.'thumb_'.$item->data_values->blog_image) ?? ""}}" alt="image">
                         </a>
                     </div>
                     <div class="blog-item__content">
