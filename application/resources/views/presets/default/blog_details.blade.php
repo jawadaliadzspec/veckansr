@@ -64,7 +64,6 @@
                     <div class="blog-sidebar">
                         <h5 class="blog-sidebar__title">@lang('Latests')</h5>
                         @foreach ($latests as $item)
-                            @dd($item)
                         <div class="latest-blog">
                             <div class="latest-blog__thumb">
                                 <a href="{{ route('blog.details', ['slug' => slug($item->data_values->title), 'id' => $item->id])}}"> <img src="{{getImage(getFilePath('blog').'/'. $item->data_values->blog_image)}}" alt="latest blog"></a>
