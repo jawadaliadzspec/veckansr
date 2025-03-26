@@ -1,6 +1,6 @@
 <!--========================== Header section Start ==========================-->
 @php
-$languages = App\Models\Language::all();
+$languages = App\Models\Language::where('name','Svenska')->get();
 $pages = App\Models\Page::where('tempname', $activeTemplate)->get();
 $user = auth()->user();
 @endphp

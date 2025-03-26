@@ -1,5 +1,5 @@
 @php
-    $languages = App\Models\Language::all();
+    $languages = App\Models\Language::where('name','Svenska')->get();
     $pages = App\Models\Page::where('tempname', $activeTemplate)->get();
     $user = auth()->user();
     $socialIconElements = getContent('social_icon.element', false);
@@ -35,7 +35,7 @@
                             <li>
                                 <a href="{{$item->data_values->url}}">
                                @php echo $item->data_values->social_icon; @endphp
-                                </a> 
+                                </a>
                             </li>
                         @endforeach
                         </ul>
@@ -66,12 +66,12 @@
                             @foreach ($pages as $page)
                                 @if ($page->slug != '/')
                                     <a class="{{ request()->url() === route('pages', [$page->slug]) ? 'active' : 'aa' }}"
-                                      
+
                                         href="{{ route('pages', [$page->slug]) }}">{{ __($page->name) }}
                                     </a>
                                 @endif
                             @endforeach
-                           
+
                         </ul>
 
                     </div>
@@ -81,15 +81,15 @@
                         <ul>
                             @auth
                                 <li class="login-registration-list__item">
-                                    <a href="{{ route('user.logout') }}" class="login-registration-list__link"> 
+                                    <a href="{{ route('user.logout') }}" class="login-registration-list__link">
                                         @lang('Logout')
-                                    </a> 
+                                    </a>
                                 </li>
                             @else
                                 <li class="login-registration-list__item">
-                                    <a href="{{ route('user.login') }}" class="login-registration-list__link"> 
+                                    <a href="{{ route('user.login') }}" class="login-registration-list__link">
                                         @lang('Login')
-                                    </a> 
+                                    </a>
                                 </li>
                             @endauth
                         </ul>
@@ -109,7 +109,7 @@
                 <div class="logo-wrapper">
                     <a href="{{ route('home') }}" class="normal-logo" id="offcanvas-logo-normal"> <img
                             src="{{ getImage(getFilePath('logoIcon') . '/logo.png', '?' . time()) }}"
-                            alt="{{ config('app.name') }}"></a> 
+                            alt="{{ config('app.name') }}"></a>
                 </div>
             </div>
         </div>
@@ -131,7 +131,7 @@
             </div>
         @endauth
         <ul class="side-Nav">
-            
+
             @auth
             <li>
                 <a class='{{ Request::routeIs('user.home') ? 'active' : 'aaa' }}'
