@@ -56,7 +56,7 @@
                                 </a>
                             @else
                                 <a class="btn btn--base w-100" href="{{ route('couponDetails', $item->path) }}">
-                                    Show Details
+                                    @lang('Show Details')
                                 </a>
 {{--                                <a class="btn btn--base w-100 getCoupon1" href="{{ url($item->path) }}">Show Details</a>--}}
                             @endif
