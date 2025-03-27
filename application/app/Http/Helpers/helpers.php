@@ -307,7 +307,7 @@ function diffForHumans($date)
 
 function showDateTime($date, $format = 'M Y, h:i A')
 {
-    $lang = session()->get('lang');
+    $lang = 'en';//session()->get('lang');
     Carbon::setlocale($lang);
     return Carbon::parse($date)->translatedFormat($format);
 }
