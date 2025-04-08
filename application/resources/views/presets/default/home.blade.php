@@ -98,7 +98,7 @@
                 <div class="hero-left-content">
                      <div class="hero-content">
                         <p class="animate__animated animate__fadeInUp"><span>{{__($banner->data_values->deal_count )}} {{__($banner->data_values->subheading )}}</span></p>
-                        <h2 class="banner-title animate__animated animate__fadeInUp"><span>{{__($banner->data_values->heading)}}</h1>
+                         <h2 class="banner-title animate__animated animate__fadeInUp"><span>{{__($banner->data_values->heading)}}</span></h2>
                     </div>
                     <div class="hero-search-bar animate__animated animate__fadeInUp">
                         <form action="{{route('single.coupon.search')}}" method="get">
