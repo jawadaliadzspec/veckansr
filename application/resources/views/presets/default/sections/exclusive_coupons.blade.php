@@ -8,7 +8,7 @@
         ->get();
 @endphp
 <!-- < exclusive -->
-<section class="exclusive-section py-115">
+<section class="exclusive-section py-4">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
