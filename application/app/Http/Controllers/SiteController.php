@@ -199,6 +199,9 @@ class SiteController extends Controller
     public function couponDetails($slug) {
         $pageTitle = "Coupon Details";
         $coupon = Coupon::with(['category', 'store','wishlists'])->where('path',$slug)->where('status', 1)->first();
+        if (!$coupon) {
+            return redirect('/');
+        }
 //        $categories = Category::where('status', 1)->latest()->get();
 //        $stores = Store::where('status', 1)->latest()->get();
         return  view($this->activeTemplate . 'coupon_details',compact('pageTitle', 'coupon'));
