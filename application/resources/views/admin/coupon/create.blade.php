@@ -66,18 +66,24 @@
                                         name="link" value="" />
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="fw-bold">@lang('Start Date') </label>
                                     <input type="date" class="form-control" placeholder="@lang('Start Date')"
                                         name="start_date" value="" />
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="fw-bold">@lang('End Date') </label>
                                     <input type="date" class="form-control" placeholder="@lang('End Date')"
                                         name="expire_date" value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="fw-bold">@lang('Image') </label>
+                                    <input type="file" class="form-control"  name="image">
                                 </div>
                             </div>
                             <div class="col-md-12">

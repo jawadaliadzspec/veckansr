@@ -71,27 +71,33 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="type" class="font-weight-bold">@lang('Status')</label>
-                                    <select name="status" class="form-select">
-                                        <option value="1" {{$coupon->status ==1 ?"selected": ""}}>@lang('Active')</option>
-                                        <option value="0" {{$coupon->status ==0 ?"selected": ""}}>@lang('Inactive')</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="fw-bold">@lang('Start Date') </label>
                                     <input type="date" class="form-control" placeholder="@lang('Start Date')"
                                         name="start_date" value="{{ $coupon->start_date ? \Carbon\Carbon::parse($coupon->start_date)->format('Y-m-d') : '' }}" />
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="fw-bold">@lang('End Date') </label>
                                     <input type="date" class="form-control" placeholder="@lang('End Date')"
                                         name="expire_date" value="{{ $coupon->expire_date ? \Carbon\Carbon::parse($coupon->expire_date)->format('Y-m-d') : '' }}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="fw-bold">@lang('Image') </label>
+                                    <input type="file" class="form-control"  name="image">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="type" class="font-weight-bold">@lang('Status')</label>
+                                    <select name="status" class="form-select">
+                                        <option value="1" {{$coupon->status ==1 ?"selected": ""}}>@lang('Active')</option>
+                                        <option value="0" {{$coupon->status ==0 ?"selected": ""}}>@lang('Inactive')</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-12">

@@ -47,6 +47,15 @@ class CouponController extends Controller
             $coupon->is_deal=$request->is_deal ? 1 : 0;
             $coupon->status=1;
             $coupon->description=$request->description;
+
+        if ($request->hasFile('image')) {
+            try {
+                $coupon->thumnail = fileUploader($request->image, getFilePath('category'), getFileSize('category'));
+            } catch (\Exception $exp) {
+                $notify[] = ['error', 'Couldn\'t upload your image'];
+                return back()->withNotify($notify);
+            }
+        }
             $coupon->save();
 
             $notify[] = ['success','Coupon has been created successfully'];
@@ -88,6 +97,15 @@ class CouponController extends Controller
             $coupon->is_deal=$request->is_deal ? 1 : 0;
             $coupon->status=$request->status ? 1: 0;
             $coupon->description=$request->description;
+        if ($request->hasFile('image')) {
+            try {
+                $old = $coupon->image;
+                $coupon->image = fileUploader($request->image, getFilePath('category'), getFileSize('category'), $old);
+            } catch (\Exception $exp) {
+                $notify[] = ['error', 'Couldn\'t upload your image'];
+                return back()->withNotify($notify);
+            }
+        }
             $coupon->save();
 
             $notify[] = ['success','Coupon has been updated successfully'];
@@ -97,6 +115,8 @@ class CouponController extends Controller
 
     public function delete(Request $request) {
         $coupon = Coupon::findOrFail($request->id);
+        $filePath  =  getFilePath('category') . '/' . $coupon->image;
+        fileManager()->removeFile($filePath);
         $coupon->delete();
 
         $notify[] = ['success','Coupon has been deleted successfully'];

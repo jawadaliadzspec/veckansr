@@ -4,7 +4,12 @@
         <div class="card shadow-lg border-0 rounded-4 mx-auto">
             <!-- Image and Logo Section -->
             <div class="position-relative">
-                <img src="{{$coupon->thumnail}}" class="card-img-top" alt="Offer Image">
+                @if($coupon->thumnail && Str::startsWith($coupon->thumnail, 'https'))
+                    <img src="{{$coupon->thumnail}}" class="card-img-top" alt="Offer Image">
+                @else
+                    <img src="{{ getImage(getFilePath('category') . '/' . $coupon->thumnail) }}" class="card-img-top" alt="Offer Image">
+                @endif
+
 {{--                <img src="https://www.studentkortet.se/wp-content/uploads/2024/12/hedvig-1280x400-partner-page-web.jpg" class="card-img-top" alt="Offer Image">--}}
                 <div class="position-absolute start-50 translate-middle bg-white px-2 rounded-3 shadow-sm fw-bold">
 {{--                    <img src="" class="card-img-top" alt="Offer Image">--}}
