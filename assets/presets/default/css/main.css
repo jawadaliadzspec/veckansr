@@ -6085,7 +6085,7 @@ select.form-control.form--control:has(option) ~ .form--label {
 }
 .banner-right-shape {
     width: 925px;
-    height: 572px;
+    height: 400px;
     background: hsl(var(--base));
     position: absolute;
     right: 0;

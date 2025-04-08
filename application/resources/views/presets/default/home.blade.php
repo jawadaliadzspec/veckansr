@@ -46,7 +46,7 @@
             <div class="hero-right-side three">
                  <div class="banner-shape-bg animate-zoom-in-out"></div>
                 <div class="hero-right-thumb2">
-                    <img src="{{ getImage(getFilePath('bannerThree') . '/' . $bannerThree->data_values->banner_image) }} " alt="@lang('banner-image')">
+                    <img style="max-width: 60%" src="{{ getImage(getFilePath('bannerThree') . '/' . $bannerThree->data_values->banner_image) }} " alt="@lang('banner-image')">
                 </div>
             </div>
         </div>
