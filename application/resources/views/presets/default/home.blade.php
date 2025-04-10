@@ -37,7 +37,7 @@
                     </div>
                     <div class="grp-btn">
                         <a class="btn btn--base" href="{{route('coupon')}}">@lang('Discover more')</a>
-                        <a class="ms-3 btn btn--base outline" href="{{route('contact')}}">@lang('Contact Us')</a>
+{{--                        <a class="ms-3 btn btn--base outline" href="{{route('contact')}}">@lang('Contact Us')</a>--}}
                     </div>
                 </div>
             </div>

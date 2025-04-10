@@ -107,7 +107,7 @@
                             <div class="form-group">
                                 <label>{{__(keyToTitle($k))}}</label>
                                 <input type="text" class="form-control" name="{{$k}}"
-                                    value="{{@$content->data_values->$k }}" required />
+                                    value="{{@$content->data_values->$k }}" />
                             </div>
                         </div>
 

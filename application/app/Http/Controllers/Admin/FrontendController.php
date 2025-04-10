@@ -99,7 +99,7 @@ class FrontendController extends Controller
                 $validation_rule['image_input'] = ['nullable', 'image', new FileTypeValidate(['jpeg', 'jpg', 'png'])];
                 continue;
             }
-            $validation_rule[$input_field] = 'required';
+//            $validation_rule[$input_field] = 'required';
         }
         $request->validate($validation_rule, $validation_message, ['image_input' => 'image']);
         if ($request->id) {
