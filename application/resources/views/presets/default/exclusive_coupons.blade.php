@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div class="card-thumb">
-                                <img src="{{ getImage(getFilePath('store') . '/' . @$item->store->image) }}" height="90px" width="90px" height="90px" width="90px" alt="@lang('Store Image')">
+                                <img src="{{ getImage(getFilePath('store') . '/' . @$item->store->image) }}" height="90px" alt="@lang('Store Image')">
                             </div>
                             <div class="card-content-wrap">
                                 <p class="card-title">{{__($item->title)}}</p>
