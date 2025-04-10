@@ -19,27 +19,27 @@ class StoreController extends Controller
           [
               'name' =>'required',
               'image' => ['required','image',new FileTypeValidate(['jpg','jpeg','png','gif'])]
-            
+
           ]);
-  
+
           $store = new Store();
           $store->name=$request->name;
           $store->description=$request->description;
           $store->status=1 ;
-  
+
           if ($request->hasFile('image')) {
               try {
-                  $store->image = fileUploader($request->image, getFilePath('store'), getFileSize('store'));
+                  $store->image = fileUploader($request->image, getFilePath('store'));
               } catch (\Exception $exp) {
                   $notify[] = ['error', 'Couldn\'t upload your image'];
                   return back()->withNotify($notify);
               }
           }
-  
+
           $store->save();
           $notify[] = ['success','Store has been created successfully'];
           return back()->withNotify($notify);
-        
+
     }
 
     public function update(Request $request) {
@@ -47,28 +47,28 @@ class StoreController extends Controller
           [
               'name' =>'required',
               'image' => ['nullable','image',new FileTypeValidate(['jpg','jpeg','png','gif'])]
-            
+
           ]);
-  
+
           $store =  Store::findOrFail($request->id);
           $store->name=$request->name;
           $store->description=$request->description;
           $store->status=$request->status ? 1 : 0;
-  
+
           if ($request->hasFile('image')) {
               try {
                   $old = $store->image;
-                  $store->image = fileUploader($request->image, getFilePath('store'), getFileSize('store'), $old);
+                  $store->image = fileUploader($request->image, getFilePath('store'), null, $old);
               } catch (\Exception $exp) {
                   $notify[] = ['error', 'Couldn\'t upload your image'];
                   return back()->withNotify($notify);
               }
           }
-  
+
           $store->save();
           $notify[] = ['success','Store has been Updated successfully'];
           return back()->withNotify($notify);
-        
+
       }
       public function delete(Request $request) {
         $store =  Store::findOrFail($request->id);
@@ -79,7 +79,7 @@ class StoreController extends Controller
         return back()->withNotify($notify);
     }
 
-    public function changeStatus(Request $request)  {  
+    public function changeStatus(Request $request)  {
         $service =  Store::findOrFail($request->id);
         $service->status = $request->status;
         $service->save();

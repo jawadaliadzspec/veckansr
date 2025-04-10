@@ -137,18 +137,18 @@
     <!-- ==================== Contact Form End Here ==================== -->
 
     <!-- ==================== Map Start Here ==================== -->
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="contact-map wow animate__animated animate__fadeInUp">
-                        <iframe
-                            src="https://maps.google.com/maps?q={{ $contact->data_values->latitude }},{{ $contact->data_values->longitude }}&hl=es;z=14&amp;output=embed"
-                            width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div>--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-12">--}}
+{{--                    <div class="contact-map wow animate__animated animate__fadeInUp">--}}
+{{--                        <iframe--}}
+{{--                            src="https://maps.google.com/maps?q={{ $contact->data_values->latitude }},{{ $contact->data_values->longitude }}&hl=es;z=14&amp;output=embed"--}}
+{{--                            width="600" height="450" allowfullscreen="" loading="lazy"></iframe>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <!-- ==================== Map Start Here ==================== -->
 @endsection
