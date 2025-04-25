@@ -17,7 +17,10 @@
         "laravel/ui": "^4.2",
         "phpmailer/phpmailer": "^6.8",
         "razorpay/razorpay": "^2.8",
+        "spatie/browsershot": "^5.0",
         "stripe/stripe-php": "^10.13",
+        "symfony/css-selector": "^6.4",
+        "symfony/dom-crawler": "^7.2",
         "twilio/sdk": "^7.3"
     },
     "require-dev": {

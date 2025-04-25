@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/clear', function(){
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
 });
-
+Route::controller('ScraperController')->group(function () {
+    Route::get('/scrapeTop20', 'scrapeTop20')->name('scrapeTop20');
+    Route::get('/scrapeStoreImage', 'scrapeStoreImage')->name('scrapeStoreImage');
+});
 // User Support Ticket
 Route::controller('TicketController')->prefix('ticket')->group(function () {
     Route::get('/', 'supportTicket')->name('ticket');
@@ -73,6 +76,7 @@ Route::controller('SiteController')->group(function () {
     Route::get('/', 'index')->name('home');
 
 });
+
 //Route::get('/{deal}', [\App\Http\Controllers\SiteController::class, 'couponDetails'])->where('deal', '[a-zA-Z0-9-_]+')->name('couponDetails');
 
 
