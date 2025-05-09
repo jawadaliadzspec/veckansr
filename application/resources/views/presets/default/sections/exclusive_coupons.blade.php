@@ -35,18 +35,25 @@
                                     <i class="far fa-heart"></i>
                                 @endif
                             </button>
-
+                            @php
+                                $image = @$item->store->image;
+                                $isUrl = filter_var($image, FILTER_VALIDATE_URL);
+                            @endphp
                             <div class="ex-cta">
-                                <i class="fas fa-gem"></i>
-                                <p>@lang('Exclusive')</p>
+                                <img src="{{ $isUrl ? $image : getImage(getFilePath('store') . '/' . $image) }}" height="30px" alt="@lang('Store Image')">
                             </div>
                         </div>
+
                         <div class="card-thumb">
-                            <img src="{{ getImage(getFilePath('store') . '/' . @$item->store->image) }}" height="90px"
-                                alt="@lang('Store Image')">
+                            <img src="{{ $item->thumnail }}" height="90px" alt="@lang('Store Image')">
                         </div>
                         <div class="card-content-wrap">
                             <p class="card-title">{{ __($item->title) }}</p>
+                            @if($item->productPrice == $item->oldPrice)
+                            <div class="ex-cta">
+                                {{$item->productPrice}}
+                            </div>
+                            @endif
                             @if(!$item->is_deal)
                                 <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon1"
                                    data-id="{{ $item->id }}" data-title="{{ $item->title }}"
@@ -55,9 +62,15 @@
                                     @lang('Get Code')
                                 </a>
                             @else
-                                <a class="btn btn--base w-100" href="{{ route('couponDetails', $item->path) }}">
-                                    @lang('Show Details')
-                                </a>
+                                @if($item->productPrice == $item->oldPrice)
+                                    <a target="_blank" class="btn btn--base w-100" href="{{ $item->link }}">
+                                        @lang('Buy')
+                                    </a>
+                                @else
+                                    <a class="btn btn--base w-100" href="{{ route('couponDetails', $item->path) }}">
+                                        @lang('Show Details')
+                                    </a>
+                                @endif
 {{--                                <a class="btn btn--base w-100 getCoupon1" href="{{ url($item->path) }}">Show Details</a>--}}
                             @endif
                             @if($item->expire_date)

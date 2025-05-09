@@ -31,4 +31,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'adtraction' => [
+        'token' => env('ADTRACTION_API_TOKEN'),
+        'baseUrlV2' => env('ADTRACTION_BASE_URL_V2'),
+        'baseUrlV3' => env('ADTRACTION_BASE_URL_V3'),
+        'channelId' => env('ADTRACTION_CHANNEL_ID'),
+    ]
+
 ];
