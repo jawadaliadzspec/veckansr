@@ -15,8 +15,12 @@
                     <p>@lang('Featured')</p>
                 </div>
             </div>
+            @php
+                $image = @$item->store->image;
+                $isUrl = filter_var($image, FILTER_VALIDATE_URL);
+            @endphp
             <div class="card-thumb">
-                <img src="{{ getImage(getFilePath('store') . '/' . @$item->store->image) }}" height="90px" alt="@lang('Store Image')">
+                <img src="{{ $isUrl ? $image : getImage(getFilePath('store') . '/' . $image) }}" height="90px" alt="@lang('Store Image')">
             </div>
             <div class="card-content-wrap">
                 <p class="card-title">{{__($item->title)}}</p>

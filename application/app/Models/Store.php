@@ -8,7 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Store extends Model
 {
     use HasFactory;
-    
+
+    protected $fillable = [
+        'channelId',
+        'channelName',
+        'status',
+        'programId',
+        'name',
+        'description',
+        'image',
+        'categoryName',
+        'categoryId',
+        'productFeedId',
+    ];
     public function coupons()
         {
             return $this->belongsToMany(Coupon::class);

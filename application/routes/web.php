@@ -9,7 +9,8 @@ Route::get('/clear', function(){
 });
 Route::controller('ScraperController')->group(function () {
     Route::get('/scrapeTop20', 'scrapeTop20')->name('scrapeTop20');
-    Route::get('/scrapeStoreImage', 'scrapeStoreImage')->name('scrapeStoreImage');
+    Route::get('/getApplications', 'getApplications')->name('getApplications');
+    Route::get('/getProductFeed', 'getProductFeed')->name('getProductFeed');
 });
 // User Support Ticket
 Route::controller('TicketController')->prefix('ticket')->group(function () {
