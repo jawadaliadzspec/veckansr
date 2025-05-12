@@ -20,7 +20,7 @@
                                 {{ __($item->name) }}
                             @endif
                         </a>
-                        <span class="text--base">{{$item->coupons->count()}} @lang('coupons')</span>
+{{--                        <span class="text--base">{{$item->coupons->count()}} @lang('coupons')</span>--}}
 
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                 </div>
             @endif
         </div>
-    
+
     </div>
 </section>
 @endsection
