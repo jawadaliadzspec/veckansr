@@ -1,6 +1,6 @@
 @php
     $popularCoupon = getContent('categories.content', true);
-    $popularCouponElements = App\Models\Category::with('coupons')->where('status', 1)->latest()->limit(8)->get();
+    $popularCouponElements = App\Models\Category::query()->where('status', 1)->latest()->limit(8)->get();
     $firstAd = App\Models\Ad::first();
 @endphp
 
@@ -45,9 +45,9 @@
                                 {{ __($item->name) }}
                             @endif
                         </a>
-                        <span class="text--base">{{$item->coupons->count()}} @lang('coupons')</span>
+{{--                        <span class="text--base">{{$item->coupons->count()}} @lang('coupons')</span>--}}
                     </div>
-                    
+
                 </div>
             @endforeach
         </div>
