@@ -209,8 +209,8 @@ class SiteController extends Controller
     // categories
     public function categories() {
         $pageTitle = "categories";
-        $categories = Category::with('coupons')->where('status', 1)->latest()->paginate(getPaginate());
-        $stores = Store::where('status', 1)->latest()->paginate(getPaginate(6));
+        $categories = Category::query()->where('status', 1)->latest()->paginate(getPaginate());
+//        $stores = Store::where('status', 1)->latest()->paginate(getPaginate(6));
         return  view($this->activeTemplate . 'categories',compact('pageTitle', 'categories'));
     }
 
