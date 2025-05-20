@@ -168,6 +168,9 @@ class AddrevenueController extends Controller
             ProcessProductsJob::dispatch($channelId, $limit, $offset);
             $offset++;
         } while ($offset < $totalCount);
+        return response()->json([
+            'message' => 'Jobs Added successfully.'
+        ]);
     }
 
 
