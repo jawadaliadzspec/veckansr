@@ -144,7 +144,7 @@ class AddrevenueController extends Controller
     {
         $channelId = config('services.addrevenue.channelId');
         $limit = 1000;
-        $offset = 127;
+        $offset = 0;
         $totalCount = 475;
 
         do {
@@ -159,7 +159,7 @@ class AddrevenueController extends Controller
                 method: 'GET',
                 body: [],
             );
-            dd($response);
+//            dd($response);
 //            if ($response && is_array($response['results'])) {
 //                foreach ($response['results'] as $product) {
 //                    $this->createDeals($product);
