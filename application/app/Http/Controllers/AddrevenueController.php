@@ -144,7 +144,7 @@ class AddrevenueController extends Controller
     {
         $channelId = config('services.addrevenue.channelId');
         $limit = 1000;
-        $offset = 0;
+        $offset = 115;
         $totalCount = 475;
 
         do {
