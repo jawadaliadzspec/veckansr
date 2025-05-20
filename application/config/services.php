@@ -36,6 +36,12 @@ return [
         'baseUrlV2' => env('ADTRACTION_BASE_URL_V2'),
         'baseUrlV3' => env('ADTRACTION_BASE_URL_V3'),
         'channelId' => env('ADTRACTION_CHANNEL_ID'),
+    ],
+
+    'addrevenue' => [
+        'token' => env('ADDREVENUE_API_TOKEN'),
+        'baseUrlV2' => env('ADDREVENUE_BASE_URL_V2'),
+        'channelId' => env('ADDREVENUE_CHANNEL_ID'),
     ]
 
 ];

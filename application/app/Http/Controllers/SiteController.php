@@ -169,7 +169,9 @@ class SiteController extends Controller
     public function getModalInfo(Request $request){
         $couponId =  $request->couponId;
         $coupon = Coupon::with('store')->where('id',$couponId)->first();
-        $storeImage = getFilePath('store') . '/' . $coupon->store->image;
+        $image = $coupon->store->image;
+        $isUrl = filter_var($image, FILTER_VALIDATE_URL);
+        $storeImage = $isUrl ? $image : getFilePath('store') . '/' . $coupon->store->image;
         $storeName = $coupon->store->name;
 
         return response()->json([

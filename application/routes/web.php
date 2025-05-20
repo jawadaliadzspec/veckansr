@@ -12,6 +12,11 @@ Route::controller('ScraperController')->group(function () {
     Route::get('/getApplications', 'getApplications')->name('getApplications');
     Route::get('/getProductFeed', 'getProductFeed')->name('getProductFeed');
 });
+Route::controller('AddrevenueController')->group(function () {
+    Route::get('/getAdvertisers', 'getAdvertisers')->name('getAdvertisers');
+    Route::get('/getProducts', 'getProducts')->name('getProducts');
+    Route::get('/getCampaigns', 'getCampaigns')->name('getCampaigns');
+});
 // User Support Ticket
 Route::controller('TicketController')->prefix('ticket')->group(function () {
     Route::get('/', 'supportTicket')->name('ticket');

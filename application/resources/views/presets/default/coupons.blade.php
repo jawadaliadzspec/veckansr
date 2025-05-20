@@ -95,6 +95,7 @@
                                 @php
                                     $image = @$item->store->image;
                                     $isUrl = filter_var($image, FILTER_VALIDATE_URL);
+                                    $image = $isUrl ? $image : getImage(getFilePath('store') . '/' . $image)
                                 @endphp
                                 <div class="ex-cta">
                                     <img src="{{ $isUrl ? $image : getImage(getFilePath('store') . '/' . $image) }}" height="30px" alt="@lang('Store Image')">
@@ -110,18 +111,18 @@
                                 </div>
                             </div>
                             <div class="card-thumb">
-                                <img src="{{ $item->thumnail }}" height="90px" alt="@lang('Store Image')">
+                                <img src="{{ $item->thumnail ?? $image }}" height="90px" alt="@lang('Store Image')">
                             </div>
                             <div class="card-content-wrap">
-                                <p class="card-title">{{__($item->title)}}</p>
+                                <p class="card-title">{{Str::limit(__($item->title), 50)}}</p>
 {{--                                <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon" data-id="{{$item->id}}" data-title="{{$item->title}}" data-code="{{$item->code}}" data-description="{{$item->description}}" data-link="{{$item->link}}">@lang('Get Code')</a>--}}
-                                @if($item->productPrice == $item->oldPrice)
+                                @if($item->productPrice && $item->productPrice == $item->oldPrice)
                                     <div class="ex-cta">
                                         {{$item->productPrice}}
                                     </div>
                                 @endif
                                 @if(!$item->is_deal)
-                                    <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon1"
+                                    <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon"
                                        data-id="{{ $item->id }}" data-title="{{ $item->title }}"
                                        data-code="{{ $item->code }}" data-description="{{ $item->description }}"
                                        data-link="{{ $item->link }}">
@@ -274,11 +275,9 @@
                     var storeImages = response.storeImage;
                     var storeName = response.storeName;
                     $('.storeName').text(storeName);
-                    if(storeImages){
-                        var baseUrl = '{{ url('/') }}';
-                        var imageUrl = baseUrl + '/' + storeImages;
-                        $('.storeImage').attr('src', imageUrl);
-                    }else{
+                    if (storeImages) {
+                        $('.storeImage').attr('src', storeImages);
+                    } else {
                         console.error('store image could not found');
                     }
 

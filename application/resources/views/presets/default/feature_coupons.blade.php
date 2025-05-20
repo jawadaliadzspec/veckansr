@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             <div class="card-thumb">
-                                <img src="{{ $item->thumnail }}" height="90px" alt="@lang('Store Image')">
+                                <img src="{{ $item->thumnail ?? $isUrl ? $image : getImage(getFilePath('store') . '/' . $image) }}" height="90px" alt="@lang('Store Image')">
                             </div>
                             <div class="card-content-wrap">
                                 <p class="card-title">{{__($item->title)}}</p>
