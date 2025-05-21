@@ -38,14 +38,15 @@
                             @php
                                 $image = @$item->store->image;
                                 $isUrl = filter_var($image, FILTER_VALIDATE_URL);
+                                $image = $isUrl ? $image : getImage(getFilePath('store') . '/' . $image)
                             @endphp
                             <div class="ex-cta">
-                                <img src="{{ $isUrl ? $image : getImage(getFilePath('store') . '/' . $image) }}" height="30px" alt="@lang('Store Image')">
+                                <img src="{{ $image }}" height="30px" alt="@lang('Store Image')">
                             </div>
                         </div>
 
                         <div class="card-thumb">
-                            <img src="{{ $item->thumnail ?? $isUrl ? $image : getImage(getFilePath('store') . '/' . $image) }}" height="90px" alt="@lang('Store Image')">
+                            <img src="{{ $item->thumnail ?? $image }}" height="90px" alt="@lang('Store Image')">
                         </div>
                         <div class="card-content-wrap">
                             <p class="card-title">{{ __($item->title) }}</p>
