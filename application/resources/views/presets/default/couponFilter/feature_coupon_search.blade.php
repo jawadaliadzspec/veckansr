@@ -13,27 +13,29 @@
                     @php
                         $image = @$item->store->image;
                         $isUrl = filter_var($image, FILTER_VALIDATE_URL);
+                        $image = $isUrl ? $image : getImage(getFilePath('store') . '/' . $image)
                     @endphp
                     <div class="ex-cta">
-                        <img src="{{ $isUrl ? $image : getImage(getFilePath('store') . '/' . $image) }}" height="30px" alt="@lang('Store Image')">
-                        {{--                                    <i class="fas fa-gem"></i>--}}
-                        {{--                                    @if($item->is_featured == 1)--}}
-                        {{--                                    <p>@lang('Featured')</p>--}}
-                        {{--                                    @elseif($item->is_exclusive == 1)--}}
-                        {{--                                    <p>@lang('Exclusive')</p>--}}
-                        {{--                                    @else--}}
-                        {{--                                    <p>@lang('New')</p>--}}
-                        {{--                                    @endif--}}
+                        <img src="{{ $image }}" height="30px" alt="@lang('Store Image')">
+
+                        {{--                    <i class="fas fa-gem"></i>--}}
+                        {{--                    @if($item->is_featured == 1)--}}
+                        {{--                    <p>@lang('Featured')</p>--}}
+                        {{--                    @elseif($item->is_exclusive == 1)--}}
+                        {{--                    <p>@lang('Exclusive')</p>--}}
+                        {{--                    @else--}}
+                        {{--                    <p>@lang('New')</p>--}}
+                        {{--                    @endif--}}
 
                     </div>
                 </div>
                 <div class="card-thumb">
-                    <img src="{{ $item->thumnail }}" height="90px" alt="@lang('Store Image')">
+                    <img src="{{ $item->thumnail ?? $image }}" height="90px" alt="@lang('Store Image')">
                 </div>
                 <div class="card-content-wrap">
                     <p class="card-title">{{__($item->title)}}</p>
-                    {{--                                <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon" data-id="{{$item->id}}" data-title="{{$item->title}}" data-code="{{$item->code}}" data-description="{{$item->description}}" data-link="{{$item->link}}">@lang('Get Code')</a>--}}
-                    @if($item->productPrice == $item->oldPrice)
+                    {{--                <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon" data-id="{{$item->id}}" data-title="{{$item->title}}" data-code="{{$item->code}}" data-description="{{$item->description}}" data-link="{{$item->link}}">@lang('Get Code')</a>--}}
+                    @if($item->productPrice && $item->productPrice == $item->oldPrice)
                         <div class="ex-cta">
                             {{$item->productPrice}}
                         </div>
