@@ -1,9 +1,71 @@
 <div class="row gy-4">
     @forelse($featureCoupons as $item)
-        <div class="col-lg-4 col-md-6">
-            <div class="coupon-card wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
+{{--        <div class="col-lg-4 col-md-6">--}}
+{{--            <div class="coupon-card wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">--}}
+{{--                <div class="card-ribbon-wrap">--}}
+{{--                    <button class="fav-cta addToWishList" data-id="{{ $item->id }}">--}}
+{{--                        @if (auth()->check() && $item->wishlists->count() > 0)--}}
+{{--                            <i class="fas fa-heart"></i>--}}
+{{--                        @else--}}
+{{--                            <i class="far fa-heart"></i>--}}
+{{--                        @endif--}}
+{{--                    </button>--}}
+{{--                    @php--}}
+{{--                        $image = @$item->store->image;--}}
+{{--                        $isUrl = filter_var($image, FILTER_VALIDATE_URL);--}}
+{{--                        $image = $isUrl ? $image : getImage(getFilePath('store') . '/' . $image)--}}
+{{--                    @endphp--}}
+{{--                    <div class="ex-cta">--}}
+{{--                        <img src="{{ $image }}" height="30px" alt="@lang('Store Image')">--}}
+
+{{--                        --}}{{--                    <i class="fas fa-gem"></i>--}}
+{{--                        --}}{{--                    @if($item->is_featured == 1)--}}
+{{--                        --}}{{--                    <p>@lang('Featured')</p>--}}
+{{--                        --}}{{--                    @elseif($item->is_exclusive == 1)--}}
+{{--                        --}}{{--                    <p>@lang('Exclusive')</p>--}}
+{{--                        --}}{{--                    @else--}}
+{{--                        --}}{{--                    <p>@lang('New')</p>--}}
+{{--                        --}}{{--                    @endif--}}
+
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="card-thumb">--}}
+{{--                    <img src="{{ $item->thumnail ?? $image }}" height="90px" alt="@lang('Store Image')">--}}
+{{--                </div>--}}
+{{--                <div class="card-content-wrap">--}}
+{{--                    <p class="card-title">{{__($item->title)}}</p>--}}
+{{--                    --}}{{--                <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon" data-id="{{$item->id}}" data-title="{{$item->title}}" data-code="{{$item->code}}" data-description="{{$item->description}}" data-link="{{$item->link}}">@lang('Get Code')</a>--}}
+{{--                    @if($item->productPrice && $item->productPrice == $item->oldPrice)--}}
+{{--                        <div class="ex-cta">--}}
+{{--                            {{$item->productPrice}}--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
+{{--                    @if(!$item->is_deal)--}}
+{{--                        <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon1"--}}
+{{--                           data-id="{{ $item->id }}" data-title="{{ $item->title }}"--}}
+{{--                           data-code="{{ $item->code }}" data-description="{{ $item->description }}"--}}
+{{--                           data-link="{{ $item->link }}">--}}
+{{--                            @lang('Get Code')--}}
+{{--                        </a>--}}
+{{--                    @else--}}
+{{--                        @if($item->productPrice == $item->oldPrice)--}}
+{{--                            <a target="_blank" class="btn btn--base w-100" href="{{ $item->link }}">--}}
+{{--                                @lang('Buy')--}}
+{{--                            </a>--}}
+{{--                        @else--}}
+{{--                            <a class="btn btn--base w-100" href="{{ route('couponDetails', $item->path) }}">--}}
+{{--                                @lang('Show Details')--}}
+{{--                            </a>--}}
+{{--                        @endif--}}
+{{--                    @endif--}}
+{{--                    @if($item->expire_date)<p class="card-action">{!! isExpired($item->id) !!}</p>@endif--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+        <div class="col-lg-4 col-md-6 d-flex">
+            <div class="coupon-card wow animate__animated animate__fadeInUp w-100 d-flex flex-column" data-wow-delay="0.5s">
                 <div class="card-ribbon-wrap">
-                    <button class="fav-cta addToWishList" data-id="{{ $item->id }}">
+                    <button class="fav-cta addToWishList1" data-id="{{ $item->id }}">
                         @if (auth()->check() && $item->wishlists->count() > 0)
                             <i class="fas fa-heart"></i>
                         @else
@@ -17,48 +79,49 @@
                     @endphp
                     <div class="ex-cta">
                         <img src="{{ $image }}" height="30px" alt="@lang('Store Image')">
-
-                        {{--                    <i class="fas fa-gem"></i>--}}
-                        {{--                    @if($item->is_featured == 1)--}}
-                        {{--                    <p>@lang('Featured')</p>--}}
-                        {{--                    @elseif($item->is_exclusive == 1)--}}
-                        {{--                    <p>@lang('Exclusive')</p>--}}
-                        {{--                    @else--}}
-                        {{--                    <p>@lang('New')</p>--}}
-                        {{--                    @endif--}}
-
                     </div>
                 </div>
-                <div class="card-thumb">
+
+                <div class="card-thumb text-center">
                     <img src="{{ $item->thumnail ?? $image }}" height="90px" alt="@lang('Store Image')">
                 </div>
-                <div class="card-content-wrap">
-                    <p class="card-title">{{__($item->title)}}</p>
-                    {{--                <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon" data-id="{{$item->id}}" data-title="{{$item->title}}" data-code="{{$item->code}}" data-description="{{$item->description}}" data-link="{{$item->link}}">@lang('Get Code')</a>--}}
-                    @if($item->productPrice && $item->productPrice == $item->oldPrice)
-                        <div class="ex-cta">
-                            {{$item->productPrice}}
-                        </div>
-                    @endif
-                    @if(!$item->is_deal)
-                        <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon1"
-                           data-id="{{ $item->id }}" data-title="{{ $item->title }}"
-                           data-code="{{ $item->code }}" data-description="{{ $item->description }}"
-                           data-link="{{ $item->link }}">
-                            @lang('Get Code')
-                        </a>
-                    @else
-                        @if($item->productPrice == $item->oldPrice)
-                            <a target="_blank" class="btn btn--base w-100" href="{{ $item->link }}">
-                                @lang('Buy')
+
+                {{-- Flex-grow area --}}
+                <div class="card-content-wrap d-flex flex-column flex-grow-1 justify-content-between p-2">
+                    <div>
+                        <p class="card-title" style="min-height: 48px;">{{ __($item->title) }}</p>
+
+                        @if($item->productPrice && $item->productPrice == $item->oldPrice)
+                            <div class="ex-cta mb-2">
+                                {{ $item->productPrice }}
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="mt-auto">
+                        @if(!$item->is_deal)
+                            <a href="javascript:void(0)" class="btn btn--base w-100 getCoupon1"
+                               data-id="{{ $item->id }}" data-title="{{ $item->title }}"
+                               data-code="{{ $item->code }}" data-description="{{ $item->description }}"
+                               data-link="{{ $item->link }}">
+                                @lang('Get Code')
                             </a>
                         @else
-                            <a class="btn btn--base w-100" href="{{ route('couponDetails', $item->path) }}">
-                                @lang('Show Details')
-                            </a>
+                            @if($item->productPrice == $item->oldPrice)
+                                <a target="_blank" class="btn btn--base w-100" href="{{ $item->link }}">
+                                    @lang('Buy')
+                                </a>
+                            @else
+                                <a class="btn btn--base w-100" href="{{ route('couponDetails', $item->path) }}">
+                                    @lang('Show Details')
+                                </a>
+                            @endif
                         @endif
-                    @endif
-                    @if($item->expire_date)<p class="card-action">{!! isExpired($item->id) !!}</p>@endif
+
+                        @if($item->expire_date)
+                            <p class="card-action mt-2">{!! isExpired($item->id) !!}</p>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
