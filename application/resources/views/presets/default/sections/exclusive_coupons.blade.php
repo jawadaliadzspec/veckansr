@@ -4,7 +4,7 @@
         ->where('status', 1)
         ->where('is_exclusive', 1)
         ->latest()
-        ->limit(8)
+        ->limit(4)
         ->get();
 @endphp
 <!-- < exclusive -->

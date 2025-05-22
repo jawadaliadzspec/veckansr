@@ -130,6 +130,8 @@
 
 @endif
 
+@include($activeTemplate.'sections.current_coupons')
+
 @if($sections->secs != null)
 @foreach(json_decode($sections->secs) as $sec)
 @include($activeTemplate.'sections.'.$sec)
