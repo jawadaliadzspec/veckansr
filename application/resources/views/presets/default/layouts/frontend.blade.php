@@ -21,11 +21,23 @@
     @stack('style')
 
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue.'css/color.php') }}?color={{ $general->base_color }}&secondColor={{ $general->secondary_color }}">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-THPQZSQG');</script>
+    <!-- End Google Tag Manager -->
+
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THPQZSQG"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <div class="sidebar-overlay"></div>
 
-    <!--==================== Preloader Start ====================-->      
+    <!--==================== Preloader Start ====================-->
     <div id="loading">
         <div id="loading-center">
             <div id="loading-center-absolute">
@@ -40,7 +52,7 @@
 @if(@$referByHomePage ? @$referByHomePage == 2 : gs()->homepage == 2)
     @if(@$referByHomePage ? @$referByHomePage == 2 : request()->route()->uri == '/')
          @include($activeTemplate.'components.home_two_header')
-         @else 
+         @else
          @include($activeTemplate.'components.header')
     @endif
 @else
@@ -73,7 +85,7 @@
   <script src="{{asset($activeTemplateTrue.'js/slick.min.js')}}"></script>
   <script src="{{asset($activeTemplateTrue.'js/wow.min.js')}}"></script>
   <script src="{{asset($activeTemplateTrue.'js/main.js')}}"></script>
- 
+
 
 @stack('script-lib')
 
