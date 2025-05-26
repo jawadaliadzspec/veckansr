@@ -2,6 +2,7 @@
 //    $exclusiveCoupon = getContent('exclusive_coupons.content', true);
     $exlusivesCouponsData = App\Models\Coupon::with(['category', 'store', 'wishlists'])
         ->where('status', 1)
+        ->where('is_deal',1)
         ->inRandomOrder()
         ->limit(4)
         ->get();

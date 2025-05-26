@@ -3,6 +3,7 @@
     $featuredCouponsData = App\Models\Coupon::with(['category', 'store', 'wishlists'])
         ->where('status', 1)
         ->where('is_featured', 1)
+        ->where('is_deal',1)
         ->latest()
         ->limit(8)
         ->get();
