@@ -4,6 +4,7 @@
         ->where('status', 1)
         ->where('is_featured', 1)
         ->where('is_deal',1)
+        ->whereColumn('productPrice', '!=', 'oldPrice')
         ->latest()
         ->limit(8)
         ->get();

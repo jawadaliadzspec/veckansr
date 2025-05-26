@@ -3,6 +3,7 @@
     $exlusivesCouponsData = App\Models\Coupon::with(['category', 'store', 'wishlists'])
         ->where('status', 1)
         ->where('is_deal',1)
+        ->whereColumn('productPrice', '!=', 'oldPrice')
         ->inRandomOrder()
         ->limit(4)
         ->get();
