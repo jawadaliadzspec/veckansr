@@ -193,7 +193,14 @@ class SiteController extends Controller
     // coupons
     public function coupons() {
         $pageTitle = "Coupons";
-        $coupons = Coupon::with(['category', 'store','wishlists'])->where('status', 1)->latest()->paginate(getPaginate());
+        $coupons = Coupon::with(['category', 'store', 'wishlists'])
+            ->where('status', 1)
+            ->whereHas('store', function ($query) {
+                $query->where('status', 1);
+            })
+            ->latest()
+            ->paginate(getPaginate());
+//        $coupons = Coupon::with(['category', 'store','wishlists'])->where('status', 1)->latest()->paginate(getPaginate());
         $categories = Category::where('status', 1)->latest()->get();
         $stores = Store::where('status', 1)->latest()->get();
         return  view($this->activeTemplate . 'coupons',compact('pageTitle', 'coupons', 'categories', 'stores'));
