@@ -217,7 +217,7 @@ class SiteController extends Controller
     }
     // categories
     public function categories() {
-        $pageTitle = "categories";
+        $pageTitle = "kategorier";
         $categories = Category::query()->where('status', 1)->latest()->paginate(getPaginate());
 //        $stores = Store::where('status', 1)->latest()->paginate(getPaginate(6));
         return  view($this->activeTemplate . 'categories',compact('pageTitle', 'categories'));
